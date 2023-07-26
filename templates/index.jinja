@@ -1,0 +1,56 @@
+{% extends 'base.jinja' %}
+{% block content %}
+
+<table class="table">
+<tr>
+    <th class="table__header">Driver Number</th>
+    <th class="table__header">Name</th>
+    <th class="table__header">Points</th>
+    <th class="table__header">Team</th>
+    <th class="table__header">&#10060;</th>
+</tr>
+    {% for driver in drivers %}
+    <tr>
+        <td><a href="/drivers/{{ driver.id  }}">{{ driver.driver_number }}</a></td> 
+        <td>{{ driver.name }}</td>
+        <td>{{ driver.points }}</td>
+        <td>{{ driver.team_id }}</td>
+         <td>
+        <form action="/drivers/{{ driver.id }}/delete" method="POST">
+            <input type="submit" value="Delete">
+        </form>
+    </td>
+    </tr>
+    {% endfor %}
+    </table>
+
+<form action="/drivers" method="post">
+<div>
+<label for="driver_number">Driver Number</label>
+<input name="driver_number" type="integer" id="driver_number" required autofocus/>
+</div>
+
+<div>
+<label for="name">Name</label>
+<input name="name" id="name" type="text" />
+</div>
+
+<div>
+<label for="points">Points</label>
+<input name="points" id="points" type="integer" />
+</div>
+
+<div>
+<label for="team">Team</label>
+<select name="team" id="team">
+    <option value="1">Red Bull</option>
+    <option value="2">Aston Martin</option>
+    <option value="3">Mercedes</option>
+</select>
+</div>
+
+<button type="submit">Add driver</button>
+</form>
+
+
+{% endblock content %}

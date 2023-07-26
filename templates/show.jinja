@@ -1,0 +1,31 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+    
+<table class="table">
+<tr>
+    <th class="table__header">Driver Number</th>
+    <th class="table__header">Name</th>
+    <th class="table__header">Points</th>
+    <th class="table__header">Team</th>
+    <th class="table__header">&#10060;</th>
+    <th class="table__header"></th>
+</tr>
+    
+<tr>
+    <td>{{ driver.driver_number }}</a></td> 
+    <td>{{ driver.name }}</td>
+    <td>{{ driver.points }}</td>
+    <td>{{ driver.team_id }}</td>
+    <td>
+    <form action="/drivers/{{ driver.driver_number }}/delete" method="POST">
+        <input type="submit" value="Delete">
+    </form>
+    </td>
+    <td>
+    <a href="/drivers/{{driver.driver_number}}/edit">Edit</a>
+    </td>
+</tr>
+</table>
+
+{% endblock content %}

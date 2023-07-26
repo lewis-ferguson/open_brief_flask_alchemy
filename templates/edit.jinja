@@ -1,0 +1,33 @@
+{% extends 'base.jinja' %}
+{% block content %}
+
+<form action="/drivers" method="post">
+<div>
+<label for="driver_number">Driver Number</label>
+<input name="driver_number" type="integer" id="driver_number" value="{{driver.driver_number}}" />
+</div>
+
+<div>
+<label for="name">Name</label>
+<input name="name" id="name" type="text" value="{{driver.name}}" />
+</div>
+
+<div>
+<label for="points">Points</label>
+<input name="points" id="points" type="integer" value="{{driver.points}}"/>
+</div>
+
+<div>
+<label for="team">Team</label>
+<select name="team" id="team" value="{{driver.team_id}}">
+    <option value="1">Red Bull</option>
+    <option value="2">Aston Martin</option>
+    <option value="3">Mercedes</option>
+</select>
+</div>
+
+<button type="submit">Add driver</button>
+</form>
+    
+{% endblock content %}
+
